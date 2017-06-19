@@ -1,0 +1,22 @@
+<div class="modal-dialog well post" style="transition: 0.1s ease-in-out">
+  <h1>New Balance</h1>
+
+  <%= form_for :balance, remote: true, url: balances_path do |f| %>
+      <p>
+        <%= f.text_field :amount, class:"form-control input-lg", placeholder:"Amount", maxlength: '11'%>
+      </p>
+      <p>
+        <%= f.text_field :notes, class:"form-control input-lg", placeholder:"Notes" %>
+      </p>
+      <p>
+        <%= f.label :category %><br>
+        <%= f.select :category_id, options_for_select(@categories.collect { |category|
+          [category.name.titleize, category.id] }, 0), {}, { :class => 'btn btn-block btn-lg' }%>
+      </p>
+
+      <p>
+        <%= f.submit 'Save', class: 'save btn btn-block btn-lg btn-primary' %>
+      </p>
+  <% end %>
+  <ul class="errors"></ul>
+</div>

@@ -1,0 +1,13 @@
+<div class="modal-dialog well post" style="transition: 0.1s ease-in-out">
+<h1>Editing category</h1>
+<%= form_for @category, :html => {:id => @category.id}, remote: true do |f| %>
+    <p>
+      <%= f.text_field :name, class:"form-control input-lg"%>
+    </p>
+      <p>
+        <%= f.label :type %><br>
+        <%= f.select(:category_type, options_for_select([['Expenditure'], ['Earning']], :selected => f.object.category_type), {}, { :class => 'btn btn-block btn-lg' }) %>
+      </p>
+    <%= f.submit "Save", class: 'save btn btn-block btn-lg btn-primary'%>
+<% end %>
+</div>

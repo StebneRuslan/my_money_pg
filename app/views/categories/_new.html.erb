@@ -1,0 +1,13 @@
+<div class="modal-dialog well post" style="transition: 0.1s ease-in-out">
+<h1>New Category</h1>
+<%= form_for :category, remote: true, url: categories_path do |f| %>
+    <p>
+      <%= f.text_field :name, class:"form-control input-lg", placeholder:"Name" %>
+      <%= f.label :type %><br>
+      <%= f.select(:category_type, options_for_select([['Expenditure'], ['Earning']]), {}, { :class => 'btn btn-block btn-lg' }) %>
+    </p>
+    <p>
+      <%= f.submit 'Save', class: 'save btn btn-block btn-lg btn-primary' %>
+    </p>
+<% end %>
+</div>

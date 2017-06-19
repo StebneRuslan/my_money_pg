@@ -1,0 +1,12 @@
+<div class="modal-dialog well" style="transition: 0.1s ease-in-out">
+  <h1>Editing balance</h1>
+  <%= form_for @balance, :html => {:id => @balance.id}, remote: true do |f| %>
+      <p>
+        <%= f.text_field :amount, class:"form-control input-lg", placeholder:"Amount" %>
+      </p>
+      <p>
+        <%= f.text_field :notes, class:"form-control input-lg", placeholder:"Notes" %>
+      </p>
+      <%= f.submit "Save", class: 'save btn btn-block btn-lg btn-primary'%>
+  <% end %>
+</div>

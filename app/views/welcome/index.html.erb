@@ -1,0 +1,10 @@
+<%= render :partial => 'categories/index', categories: @categories %>
+
+<%= link_to 'New category', new_category_path, :remote => true, class: 'btn btn-primary' %>
+
+<%= link_to 'Earning', new_balance_path(:type => "Earning"), class:"btn btn-info glyphicon glyphicon-plus", :remote => true %>
+<%= link_to 'Expenditure', new_balance_path(:type => 'Expenditure'), class:"btn btn-danger glyphicon glyphicon-trash", :remote => true%>
+
+<%= content_tag :div, "", id: "container", balances: @data%>
+
+<div id="category-modal" class="modal fade"></div>

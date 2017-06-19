@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MyMoney</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag    "registration" %>
+  <%= stylesheet_link_tag    "footer" %>
+
+  <%= csrf_meta_tags %>
+
+
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <script src="http://code.highcharts.com/highcharts.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+
+</head>
+<body>
+<%= render 'layouts/header' %>
+<%= yield %>
+<%= render 'layouts/footer' %>
+</body>
+</html>
+
+<script>
+    function updateChart(chart, response) {
+        chart.series[0].update({
+            data: response
+        });
+    }
+
+    $(function () {
+        var $container = $('#container');
+
+        var data = JSON.parse($container.attr('balances'));
+        if (data) {
+            data = _.map(data, function (item) {
+                item.y = parseFloat(item.y);
+                return item;
+            });
+
+            $container.on('update', function () {
+                $.get('get_balances', function (response) {
+                    if (response) {
+                        response = _.map(response, function (data) {
+                            data.y = parseFloat(data.y);
+                            return data;
+                        });
+                        updateChart(chart, response);
+                    }
+                });
+            });
+
+
+            var options = {
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false,
+                    type: 'pie'
+                },
+                title: {
+                    text: 'Expenditure'
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                            style: {
+                                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                            }
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Brands',
+                    colorByPoint: true,
+                    data: data
+                }]
+
+            };
+
+            var chart = Highcharts.chart('container', options);
+        }
+    });
+</script>

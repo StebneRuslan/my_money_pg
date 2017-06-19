@@ -1,0 +1,24 @@
+<h1>Listing categories</h1>
+<table class="table table-bordred table-striped">
+  <thead>
+    <th>Category name</th>
+    <th>Type</th>
+    <th>Balances</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </thead>
+  <% @categories.each do |category| %>
+      <% if category.user == current_user || category.user == nil %>
+        <%= render 'categories/category', category: category %>
+      <% end %>
+  <% end %>
+</table>
+
+<script>
+  $('body').on('ajax:success', '.edit_category', function (event, content, c) {
+      var id = $(this).attr('id');
+      $('.category_' + id).replaceWith(content);
+      $("#category-modal").modal("hide")
+      $('#container').trigger('update');
+  })
+</script>

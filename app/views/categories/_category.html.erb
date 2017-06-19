@@ -1,0 +1,17 @@
+<% category = category ? category : @category  %>
+<tr class="category_<%= category.id %> category" >
+  <td><%= category.name %></td>
+  <td><%= category.category_type %></td>
+
+  <td><%= link_to '', category_path(category), :remote => true, class: "btn btn-info btn-xs glyphicon glyphicon-info-sign" %> </td>
+
+  <td><%= link_to '', edit_category_path(category), :remote => true,
+                   class: "btn btn-primary btn-xs glyphicon glyphicon-pencil", data_title:"Edit" %> </td>
+
+  <td><%= link_to '', category_path(category), :remote => true,
+                  class: "btn btn-danger btn-xs glyphicon glyphicon-trash delete_category",
+                  method: :delete,
+                  data: { confirm: 'Are you sur  ' } %></td>
+</tr>
+
+

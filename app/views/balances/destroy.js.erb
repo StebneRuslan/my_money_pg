@@ -1,0 +1,7 @@
+$('.delete_balance').bind('ajax:success', function() {
+    $(this).closest('.balance').addClass('animated bounceOut');
+    $(this).closest('.balance').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+        $(this).detach();
+    });
+    $('#container').trigger('update');
+});

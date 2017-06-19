@@ -1,0 +1,14 @@
+<% balance = balance ? balance : @balance  %>
+<tr class="balance_<%= balance.id %> balance">
+  <td><%= balance.amount %></td>
+  <td><%= balance.date %></td>
+  <td><%= balance.notes %></td>
+
+  <td><%= link_to '', edit_balance_path(balance), :remote => true,
+                  class: "btn btn-primary btn-xs glyphicon glyphicon-pencil", data_title:"Edit" %> </td>
+
+  <td><%= link_to '', balance_path(balance), remote: true,
+          method: :delete, class: "btn btn-danger btn-xs glyphicon glyphicon-trash delete_balance",
+                  data: { confirm: 'Are you sur  ' } %></td>
+</tr>
+

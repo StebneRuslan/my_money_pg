@@ -1,0 +1,30 @@
+<div class="modal-dialog well" style="transition: 0.1s ease-in-out">
+  <h1>
+  <%= @category.name %>
+</h1>
+    <table class="table table-bordred table-striped">
+      <thead>
+      <th>Amount</th>
+      <th>Date</th>
+      <th>Notes</th>
+      <th>Edit</th>
+      <th>Delete</th>
+      </thead>
+      <% @category.balances.each do |balance| %>
+          <% if balance.user_id == current_user.id %>
+            <%= render 'balances/balance', balance: balance %>
+          <% end %>
+      <% end %>
+    </table>
+</div>
+<div id="balance-modal" class="modal fade"></div>
+<script>
+    $('body').on('ajax:success', '.edit_balance', function (event, content, c) {
+        var id = $(this).attr('id');
+        $('.balance_' + id).replaceWith(content);
+        $("#balance-modal").modal("hide");
+        $('#container').trigger('update');
+    })
+</script>
+
+
