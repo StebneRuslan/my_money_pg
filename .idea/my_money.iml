@@ -164,6 +164,7 @@
     <orderEntry type="library" scope="PROVIDED" name="prototype-rails (v3.2.1, RVM: ruby-2.3.1 [courses]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="pry (v0.10.4, RVM: ruby-2.3.1 [courses]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="pry-rails (v0.3.6, RVM: ruby-2.3.1 [courses]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="puma (v3.8.2, RVM: ruby-2.3.1 [courses]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack (v1.4.7, RVM: ruby-2.3.1 [courses]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-cache (v1.7.0, RVM: ruby-2.3.1 [courses]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-ssl (v1.3.4, RVM: ruby-2.3.1 [courses]) [gem]" level="application" />
