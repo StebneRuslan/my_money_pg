@@ -1,8 +1,8 @@
 {
-  "name": "Ruslan",
-  "description": "A barebones Rails app, which can easily be deployed to Heroku",
+  "name": "Start on Heroku: Ruby",
+  "description": "My money",
   "image": "heroku/ruby",
-  "repository": "https://github.com/StebneRuslan/My_money",
+  "repository": "https://github.com/heroku/ruby-getting-started",
   "keywords": ["ruby", "rails" ],
   "addons": [ "heroku-postgresql" ]
 }

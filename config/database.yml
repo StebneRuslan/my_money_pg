@@ -1,26 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
 development:
-  adapter: mysql2
-  database: my_money
-  username: root
-  password: 1993
-  host: localhost
-  pool: 5
-  timeout: 5000
+  <<: *default
+  database: my_money_development
 
 test:
-  adapter: mysql2
-  database: my_money_test
-  username: root
-  password: 1993
-  host: localhost
-  pool: 5
-  timeout: 5000
+  <<: *default
+  database: money_test
+
 
 production:
-  adapter: mysql2
+  <<: *default
   database: my_money_production
-  username: root
-  password: 1993
-  host: localhost
-  pool: 5
-  timeout: 5000
+  username: chat_practical
+  password: <%= ENV['CHAT_PRACTICAL_DATABASE_PASSWORD'] %>

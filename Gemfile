@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'mysql2', '0.3.21'
 gem 'rails', '3.2.22.5'
 ruby '2.3.1'
 gem 'activerecord-mysql-adapter'
 gem 'puma'
+gem 'pg', '~> 0.18'
 
 group :assets do
   gem 'bootstrap-modal-rails'
