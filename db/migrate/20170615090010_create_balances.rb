@@ -1,7 +1,7 @@
 class CreateBalances < ActiveRecord::Migration
   def change
     create_table :balances do |t|
-      t.decimal :amount, precision: 10, scale: 3
+      t.decimal :amount, precision: 15, scale: 3
       t.string :balance_type
       t.date :date
       t.string :notes
